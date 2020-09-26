@@ -1,0 +1,104 @@
+# require 'minitest/autorun'
+
+# class Animal
+#   attr_reader :name
+#   def initialize(name)
+#     @name = name
+#   end
+# end
+
+# class AnimalTest < MiniTest::Test
+  
+#   def name_test
+#     human = Animal.new('Tom')
+#     assert_equal('Tom', human.name)
+#   end
+# end
+
+#For example, a message 4 characters long should use a 2 x 2 square. A message that is 81 characters long would use a square that is 9 columns wide. A message between 5 and 8 characters long should use a rectangle 3 (characters) wide.
+  
+# def method_test(arg)  # block to proc
+#   puts arg
+#   yield
+# end
+
+# x = proc { puts 5 }
+  
+# method_test(5, &x) # proc to block
+
+# &:   ==>  if :sym_to_s does method lookup ancestors path if method found execute, otherwise no method error, for each calling object if used in collection.
+
+#  arr = ['a', 2, {a => 3}]
+
+#  arr.each(&:inspect)
+
+# arg = Proc.new { |val| val.to_s.prepend("The number is ") }
+
+# p [1, 2, 3, 4, 5].map(&arg)
+
+=begin
+
+Bundler
+Rake
+Minitest
+RubyGems
+
+
+Bundler -> Dependency manager, databases running certain versions of Ruby and certain Gems
+  Gemfile -> Goes in main folder
+    - ruby version
+    - source of your gems
+    - gems that you are using/versions
+    - if or if not you have gemspec file
+      - gemspec 
+        - authorship, info/etc for publishing to rubygems
+    - use require 'bundler/setup' in your files to disallow wrong versions
+  Bundle install 
+    - create Gemfile.lock
+      - lists dependencies
+    - download and install as needed any missing gems/versions
+  Bundle exec
+    - used to exec commands in the context of the production environment as opposed to 
+      your system setup
+      
+Rake automates tasks to build, test, package and install programs
+  -  setup requirements by creating directories and lists
+  -  and initalize databases and run tetss
+  -  package application and its files for distribution
+  -  file system that runs tasks on command line
+  -  install application, perform Git tasks, Rebuild certain files and directories (assets) based on changes to other files and directories
+  -  Does anything related to development, testing and release
+  RakeFile: defines specific tasks and task names
+  desc - desc provides short descriptions of what to do when you run rake -T
+  task associates name with either a block or list of dependencies
+  
+RubyGems:
+  - libaries of code that can be downloaded and install to add additional functionality to core Ruby
+  - installed via gem install command
+  - require 'gem_name'
+  
+  Testing with MiniTest
+  Test - describes situation or context in which the test is run (test_equal, test_nil...)
+  Test Suite - A collection of all your tests
+  Assertions - the verification step that confirms the values of your program or application, a test can have multiple assertions
+  
+  Minitest vs Rspec
+   - two most popular ruby testing frameworks
+   - minitest is assertion-style, rspec is expectation syntax
+   - assertion style is more like writing ruby methods, expectation style is more conversational/english DSL
+   
+SEAT
+Setup is like initialize in your class, sets the certain instances you are testing, except it happens before and after each test
+Execute the code against the object that we are testing (actual/expected) in a test_equal
+Assert results of the execution
+Teardown and clean up any lingering artifacts (does this after each test)
+
+Assertions: 
+various available tests to execute against the file/code being tested
+  - Happy path (expected result)
+  - Fail path (things you expect to fail will fail...refutations are less common
+  - Null path (empty inputs, strings etc..)
+  - Edge cases (pushing the edges, what works and what doesn't)
+  - Input verification/Error, raise TypeError, ArgumentError, JumpError, etc...
+  
+
